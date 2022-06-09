@@ -1,0 +1,182 @@
+<!DOCTYPE HTML>
+<html lang='eng'>
+
+<head>
+    <title> HR Application </title>
+    <script>
+
+        // this is the class employee in this time we are writing it with function keyword but it is a class
+        function Employee() {
+            // and these are its proprties 
+            this.employeeId = "";
+            this.name = "";
+            this.designationCode = 0;
+            this.designation = "";
+            this.dateOfBirth = "";
+            this.city = "";
+            this.isIndian = true;
+            this.gender = "";
+            this.panNumber = "";
+            this.aadharNumber = "";
+
+        }
+        // now we declare a arrow of size 0
+        var employeearray = [];
+        // this the object of employee class
+        var employeeobj = new Employee();
+        employeeobj.employeeId = "A100001";
+        employeeobj.name = "Pranay Gehlot";
+        employeeobj.city = "ujjain";
+        employeeobj.dateOfBirth = "07/04/2001";
+        employeeobj.designationCode = 1;
+        employeeobj.designation = "Driver";
+        employeeobj.gender = "Male";
+        employeeobj.isIndian = true;
+        employeeobj.panNumber = "CYMPG1068A";
+        employeeobj.aadharNumber = "514364308203";
+        // we assign the address of employeeobj on 1st index of employeearray
+        employeearray[0] = employeeobj;
+
+        employeeobj = new Employee();
+        employeeobj.employeeId = "A100002";
+        employeeobj.name = "Aviraj Shastri";
+        employeeobj.city = "Indore";
+        employeeobj.dateOfBirth = "06/02/2001";
+        employeeobj.designationCode = 2;
+        employeeobj.designation = "HR";
+        employeeobj.gender = "Male";
+        employeeobj.isIndian = true;
+        employeeobj.panNumber = "JGFJYGFGFJYG";
+        employeeobj.aadharNumber = "554364308203";
+        // we assign the address of employeeobj on 1st index of employeearray
+        employeearray[1] = employeeobj;
+
+
+
+        var select = null;
+        function selectEmployee(row, employeeId) {
+
+
+            if (select != null) {
+                select.style.background = "white";
+                select.style.color = "black";
+            }
+            row.style.background = "#605C5B";
+            row.style.color = "white";
+            select = row;
+            var i;
+            for (i = 0; i < employeearray.length; i++) {
+                if (employeearray[i].employeeId == employeeId) {
+                    break;
+                }
+            }
+
+            var emp = employeearray[i];
+            document.getElementById("detail_name").innerHTML = emp.name;
+            document.getElementById("detail_city").innerHTML = emp.city;
+            document.getElementById("detail_designation").innerHTML = emp.designation;
+            document.getElementById("detail_dateOfBirth").innerHTML = emp.dateOfBirth;
+            document.getElementById("detail_panNumber").innerHTML = emp.panNumber;
+            document.getElementById("detail_aadharNumber").innerHTML = emp.aadharNumber;
+        }
+
+    </script>
+</head>
+
+<body>
+    <!-- Main container starts here -->
+    <div style='width:90hw;height:auto;border:1px solid black'>
+        <!-- Header Starts Here -->
+        <div style='margin:5px;width:90hw;height:auto;border:1px solid black'>
+            <img src='/styleone/images/logo.png' style='float:left'>
+            <div style='margin-top:40px;margin-bottom:40px;font-size:20pt'>Thinking Machines </div>
+        </div> <!-- Header ends Here -->
+
+        <!-- content section starts here -->
+        <div style='width:90hw;height:70vh;margin:5px;border:1px solid white'>
+            <!-- Left Pannel -->
+            <div style='height:60vh;margin:5px;float:left;padding:5px;border:1px solid black'>
+                <b> <a href='/styleone/designationView'>Designations</a> </b><br>
+                <b> Employee </b> <br>
+                <a href='/styleone/index.html'>Home</a>
+            </div>
+            <!-- right pannel -->
+            <div
+                style='height:30vh;margin-left:105px;margin-top:5px;margin-bottom:5px;margin-right:5px;padding:5px;border:1px solid black;overflow:scroll'>
+                <table border='1'>
+                    <thead>
+                        <tr>
+                            <th colspan='2' style='width: 40px;px;text-align:left'>
+                                <h4>Employees</h4>
+                            </th>
+                            <th colspan='6' style='width: 40px;px;text-align:right'><a
+                                    href='/styleone/AddDesignation.html'> Add New Employee</a></th>
+                        </tr>
+                        <tr>
+                            <th style='width:60px;text-align:center'>S.No</th>
+                            <th style='width:100px;text-align:center'>ID.</th>
+                            <th style='width:200px;text-align:center'>Name</th>
+                            <th style='width:200px'>Designation</th>
+                            <th style='width:100px'>Edit</th>
+                            <th style='width:100px;text-align:center'>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <!-- this is how we can change the cursor to pointer in which can take action when we will click on it -->
+                        <tr style='cursor: pointer' onclick='selectEmployee(this,"A100001")'>
+
+                            <td style='text-align:center'>1.</td>
+                            <td style='text-align:center'>A100001</td>
+
+                            <td style='text-align:center'>Pranay Gehlot</td>
+                            <td style='text-align:center'>Driver</td>
+                            <td style='text-align:center'><a href='/styleone/editeEmployee?employeeId=A100001'>Edit</a></td>
+                            <td style='text-align:center'><a href='/styleone/confirmDeleteEmployeeId?code=A100001'>Delete</a>
+                            </td>
+                        </tr>
+                        <tr style='cursor: pointer' onclick='selectEmployee(this,"A100002")'>
+                            <td style='text-align:center'>2.</td>
+                            <td style='text-align:center'>A100002</td>
+                            <td style='text-align:center'>Aviraj Shastri</td>
+                            <td style='text-align:center'>HR</td>
+                            <td style='text-align:center'><a href='/styleone/editEmployee?employeeId=A100001'>Edit</a></td>
+                            <td style='text-align:center'><a
+                                    href='/styleone/confirmDeleteEmployeeId?employeeId=A100002'>Delete</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div
+                style='height:26vh;margin-left:110px;margin-top:5px;margin-bottom:5px;margin-right:5px;padding:5px;border:1px solid black;'>
+                <lable style='background-color: grey;padding-left: 5px; padding-right: 5px;'> details </lable> <br><br>
+                <table border="0" width="100%">
+                    <tr>
+                        <!-- span created for id  -->
+                        
+                        <td>Name: <span id='detail_name' style='margin-right: 30px'></span></td>
+                        <td>Designation : <span id='detail_designation' style='margin-right: 30px'></span></td>
+                        <td>City : <span id='detail_city' style='margin-right: 30px'></span></td>
+                    </tr>
+                    <tr>
+                        <td>Date Of Birth : <span id='detail_dateOfBirth' style='margin-right: 30px'></span></td>
+                        <td>Pan Number : <span id='detail_panNumber' style='margin-right: 30px'></span></td>
+                        <td>Aadhar Number : <span id='detail_aadharNumber' style='margin-right: 30px'></span></td>
+                    </tr>
+
+                </table>
+            </div>
+
+
+        </div>
+        <!-- content section ends here -->
+        <!-- Footer starts here -->
+        <div style='width:90hw;height:auto;margin:5px; text-align:center;border:1px solid white'>
+            &copy; thinking machines
+        </div>
+        <!-- Footer Ends here -->
+    </div> <!-- Main container ends here -->
+</body>
+
+</html>

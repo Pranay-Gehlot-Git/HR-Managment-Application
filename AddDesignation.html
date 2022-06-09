@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html lang='eng'>
+<head>
+<title> HR Application </title>
+<script>
+function validateForm(frm)
+{
+var title=frm.title.value.trim();
+var titleErrorSection=document.getElementById('titleErrorSection');
+titleErrorSection.innerHTML='';
+if(title.length==0)
+{
+titleErrorSection.innerHTML='required';
+frm.title.focus();
+return false;
+}
+return true;
+}
+function cancelButton()
+{
+document.getElementById('cancelButtonForm').submit();
+}
+</script>
+</head>
+<body>
+<!-- Main container starts here -->
+<div style='width:90hw;height:auto;border:1px solid black'>
+
+<!-- Header Starts Here -->
+<div style='margin:5px;width:90hw;height:auto;border:1px solid black'>
+<img src='/styleone/images/logo.png' style='float:left'><div style='margin-top:40px;margin-bottom:40px;font-size:20pt'>Thinking Machines </div>
+</div> <!-- Header ends Here -->
+
+<!-- content section starts here -->
+<div style='width:90hw;height:70vh;margin:5px;border:1px solid white'> 
+
+<!-- Left Pannel -->
+<div style='height:60vh;margin:5px;float:left;padding:5px;border:1px solid black'>
+<b> Designations </b></a><br>
+<a href='/styleone/employeeView'> Employee </a><br>
+<a href='/styleone/index.html'>Home</a><br>
+</div>
+
+<!-- right pannel -->
+<div style='height:60vh;margin-left:105px;margin-top:5px;margin-bottom:5px;margin-right:5px;padding:5px;border:1px solid black'>
+<h2 style='text-align:center'>Add Designation</h2> 
+<form action='/styleone/addDesignation' onsubmit='return validateForm(this)'>
+<b>Designations</b>
+<input type='text' id='title' name='title' maxlength='35' size='36'>
+<span id='titleErrorSection' style='color:red'></span><br>
+<button type='submit'>Add</button>
+<button type='button' onclick='cancelButton()'>Cancel</button>
+</form>
+</div>
+</div>
+<!-- content section ends here -->
+
+
+<!-- Footer starts here -->
+<div style='width:90hw;height:auto;margin:5px; text-align:center;border:1px solid white'>
+&copy; thinking machines
+</div>
+<!-- Footer Ends here -->
+
+</div> <!-- Main container ends here -->
+<form id='cancelButtonForm' action='/styleone/designationView'>
+</form>
+</body>
+</html>
